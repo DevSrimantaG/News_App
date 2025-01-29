@@ -80,7 +80,6 @@ fun NewsList(VM:viewModel) {
                         verticalArrangement = Arrangement.Center
                     ){
                         CircularProgressIndicator()
-
                     }
 
                 }

@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.newsapp20.Data.model.NewsModel
 import com.example.newsapp20.ui_layer.View_Model.viewModel
+import com.example.newsapp20.ui_layer.tab_Layout.TabLayout
 import kotlinx.coroutines.launch
 
 @SuppressLint("CoroutineCreationDuringComposition")
@@ -96,10 +97,7 @@ fun HomeScreen(viewModel: viewModel) {
             // Main screen content
 
             Box(modifier = Modifier.padding(paddingValues)) {
-            NewsList(VM = viewModel)
-
-                Text(
-                    text = "Home")
+                TabLayout(VM = viewModel)
             }
         }
     }
