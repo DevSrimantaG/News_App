@@ -1,6 +1,7 @@
 package com.example.newsapp20.ui_layer.Home_Screen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,12 +24,14 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil3.compose.SubcomposeAsyncImage
 import com.example.newsapp20.R
 import com.example.newsapp20.ui_layer.View_Model.viewModel
+import com.example.newsapp20.ui_layer.navigation.SingleNewsRout
 
 @Composable
-fun NewsList(VM:viewModel) {
+fun NewsList(VM:viewModel,navController: NavController) {
 
     Box(modifier = Modifier.fillMaxSize()) {
 
@@ -41,9 +44,19 @@ fun NewsList(VM:viewModel) {
                         .height(2.dp)
                         .background(Color.Gray))
                     Spacer(modifier = Modifier.height(5.dp))
-
                     Row (
                         modifier = Modifier.fillParentMaxWidth()
+                            .clickable {
+                                navController.navigate(
+                                    SingleNewsRout(
+                                        title = news.title,
+                                        desp = news.content,
+                                        imageUrl = news.urlToImage,
+                                        dateAndTime = news.publishedAt,
+                                        newsUrl = news.url
+                                    )
+                                )
+                            }
                     ){
                         Column(
                             modifier = Modifier
@@ -66,10 +79,9 @@ fun NewsList(VM:viewModel) {
                                 fontWeight = FontWeight.Bold,
                                 maxLines = 3
                                 )
-                            Text(text = news.publishedAt, color = Color.Green)
+                            Text(text = VM.formatDate(news.publishedAt), color = Color.Green)
                         }
                     }
-                    
                     Spacer(modifier = Modifier.height(5.dp))
                 }
             }else{
@@ -85,6 +97,5 @@ fun NewsList(VM:viewModel) {
                 }
             }
         }
-
     }
 }

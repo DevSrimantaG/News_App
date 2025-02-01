@@ -12,17 +12,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavController
 import com.example.newsapp20.ui_layer.Home_Screen.NewsList
 
 import com.example.newsapp20.ui_layer.View_Model.viewModel
 
 @Composable
-fun TabLayout(VM:viewModel) {
+fun TabLayout(VM: viewModel, navController: NavController) {
     val tabItemsList=
         listOf(
             TabItem(
@@ -80,7 +80,7 @@ fun TabLayout(VM:viewModel) {
                     VM.getTopNews(category)
 
                 }
-                NewsList(VM)
+                NewsList(VM = VM, navController = navController)
             }
             
         }

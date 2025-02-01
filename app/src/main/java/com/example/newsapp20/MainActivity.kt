@@ -10,9 +10,11 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.example.newsapp20.ui_layer.Home_Screen.HomeScreen
+import androidx.navigation.NavHostController
 import com.example.newsapp20.ui.theme.NewsApp20Theme
+import com.example.newsapp20.ui_layer.Single_News.SingleNews
 import com.example.newsapp20.ui_layer.View_Model.viewModel
+import com.example.newsapp20.ui_layer.navigation.NavHostController
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("CoroutineCreationDuringComposition")
@@ -25,7 +27,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     innerPadding
 
-                    HomeScreen(VM)
+                  NavHostController(VM)
 
                 }
             }

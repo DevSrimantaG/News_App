@@ -7,6 +7,9 @@ import com.example.newsapp20.Data.model.NewsModel
 import com.example.newsapp20.Data.remote.ApiBuilder
 import com.example.newsapp20.Data.remote.ApiBuilder.provideApi
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Locale
+import java.util.TimeZone
 
 class viewModel:ViewModel() {
 
@@ -14,12 +17,17 @@ class viewModel:ViewModel() {
 
    fun getTopNews(category: String?){
        viewModelScope.launch {
-           if (category == null){
-               data.value = provideApi().getTopHeadlines()
-           }
-           else{
-               data.value = provideApi().getCategoryNews(category = "business")
-           }
+
+               data.value =  ApiBuilder.provideApi().getTopHeadlines()
        }
    }
+    fun formatDate(isoDate: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
+        inputFormat.timeZone = TimeZone.getTimeZone("UTC")
+        val outputFormat = SimpleDateFormat("dd-MM-yy", Locale.getDefault())
+        val date = inputFormat.parse(isoDate)
+        return date?.let { outputFormat.format(it) } ?: "Invalid Date"
+    }
+
+
 }

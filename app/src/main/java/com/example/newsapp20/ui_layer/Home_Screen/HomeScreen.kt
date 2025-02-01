@@ -25,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavHostController
 import com.example.newsapp20.Data.model.NewsModel
 import com.example.newsapp20.ui_layer.View_Model.viewModel
 import com.example.newsapp20.ui_layer.tab_Layout.TabLayout
@@ -33,7 +34,7 @@ import kotlinx.coroutines.launch
 @SuppressLint("CoroutineCreationDuringComposition")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(viewModel: viewModel) {
+fun HomeScreen(viewModel: viewModel, navController: NavHostController) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
     val scope = rememberCoroutineScope()
@@ -97,7 +98,7 @@ fun HomeScreen(viewModel: viewModel) {
             // Main screen content
 
             Box(modifier = Modifier.padding(paddingValues)) {
-                TabLayout(VM = viewModel)
+                TabLayout(VM = viewModel, navController = navController)
             }
         }
     }
