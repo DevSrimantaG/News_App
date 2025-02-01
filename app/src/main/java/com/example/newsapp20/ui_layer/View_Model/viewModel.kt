@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newsapp20.Data.model.NewsModel
 import com.example.newsapp20.Data.remote.ApiBuilder
-import com.example.newsapp20.Data.remote.ApiBuilder.provideApi
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -28,6 +27,4 @@ class viewModel:ViewModel() {
         val date = inputFormat.parse(isoDate)
         return date?.let { outputFormat.format(it) } ?: "Invalid Date"
     }
-
-
 }
