@@ -1,5 +1,6 @@
 package com.example.newsapp20.ui_layer.View_Model
 
+
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,8 +17,7 @@ class viewModel:ViewModel() {
 
    fun getTopNews(category: String?){
        viewModelScope.launch {
-
-               data.value =  ApiBuilder.provideApi().getTopHeadlines()
+               data.value =  ApiBuilder.provideApi().getCategoryNews(category = category)
        }
    }
     fun formatDate(isoDate: String): String {

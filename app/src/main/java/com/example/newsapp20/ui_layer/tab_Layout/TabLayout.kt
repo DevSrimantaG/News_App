@@ -40,6 +40,7 @@ fun TabLayout(VM: viewModel, navController: NavController) {
                 selectedColor = Color.Gray,
                 unselectedColor = Color.Black
             ),
+
         )
     var selectedTabIndex by remember {
         mutableIntStateOf(0) }
@@ -58,7 +59,14 @@ fun TabLayout(VM: viewModel, navController: NavController) {
         TabRow(contentColor =Color.Black,
             selectedTabIndex = selectedTabIndex) {
             tabItemsList.forEachIndexed { index, tabItem ->
-                Tab(selected = selectedTabIndex == index, onClick = { selectedTabIndex = index }) {
+                Tab(selected = selectedTabIndex == index, onClick = { selectedTabIndex = index
+                    var category = when(tabItemsList[index].title){
+                        "Technology" -> "technology"
+                        "Sports" -> "sports"
+                        else -> null
+                    }
+                    VM.getTopNews(category)
+                }) {
                     Text(
                         text = "${tabItemsList[index].title}",
                         color = if(selectedTabIndex == index)
@@ -71,19 +79,8 @@ fun TabLayout(VM: viewModel, navController: NavController) {
         }
         HorizontalPager(state = pageState) {index->
             Box(modifier = Modifier.fillMaxSize()){
-                var category = when(tabItemsList[index].title){
-                    "Technology" -> "technology"
-                    "Sports" -> "sports"
-                    else -> null
-                }
-                LaunchedEffect(key1 = Unit) {
-                    VM.getTopNews(category)
-
-                }
                 NewsList(VM = VM, navController = navController)
             }
-            
         }
     }
-
 }

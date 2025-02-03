@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     kotlin("plugin.serialization") version "2.0.0"
 }
-
 android {
     namespace = "com.example.newsapp20"
     compileSdk = 35
@@ -72,6 +71,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
 
+
     implementation ("com.squareup.retrofit2:retrofit:2.11.0")
 
     implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
@@ -83,4 +83,5 @@ dependencies {
     val nav_version = "2.8.3"
     implementation("androidx.navigation:navigation-compose:$nav_version")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
 }

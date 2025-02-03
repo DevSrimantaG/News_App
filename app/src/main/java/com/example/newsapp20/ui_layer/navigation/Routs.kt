@@ -7,10 +7,9 @@ object HomeScreenRout
 
 @Serializable
 data class SingleNewsRout(
-    val title: String,
+    val title : String,
     val desp : String?,
-    val imageUrl: String?,
-    val newsUrl: String,
+    val imageUrl : String?,
+    val newsUrl : String,
     val dateAndTime : String
-
 )

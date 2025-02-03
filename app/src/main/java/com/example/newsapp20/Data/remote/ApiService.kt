@@ -16,8 +16,7 @@ interface APIService {
     @GET("top-headlines")
     suspend fun getCategoryNews(
         @Query("country") country: String = "us",
-        @Query("category") category: String,
+        @Query("category") category: String?,
         @Query("apiKey") apiKey: String = "cccf54d319934db2bb8b035838d21711"
     ): NewsModel
-
 }

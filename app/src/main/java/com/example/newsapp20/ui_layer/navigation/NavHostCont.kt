@@ -27,11 +27,6 @@ fun NavHostController(VM:viewModel) {
                 newsUrl = news.newsUrl,
                 navController = navController
             )
-
         }
-
-
     }
-
-
 }

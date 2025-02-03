@@ -93,7 +93,6 @@ fun NewsList(VM:viewModel,navController: NavController) {
                     ){
                         CircularProgressIndicator()
                     }
-
                 }
             }
         }
