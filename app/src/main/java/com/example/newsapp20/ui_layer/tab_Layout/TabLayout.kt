@@ -65,7 +65,7 @@ fun TabLayout(VM: viewModel, navController: NavController) {
                         "Sports" -> "sports"
                         else -> null
                     }
-                    VM.getTopNews(category)
+                    VM.getTopNews(category, null)
                 }) {
                     Text(
                         text = "${tabItemsList[index].title}",

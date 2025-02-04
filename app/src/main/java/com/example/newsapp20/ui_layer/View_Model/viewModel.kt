@@ -14,8 +14,11 @@ import java.util.TimeZone
 class viewModel:ViewModel() {
 
     var data = mutableStateOf<NewsModel?>(null)
+    init {
+        getTopNews(null,null)
+    }
 
-   fun getTopNews(category: String?){
+   fun getTopNews(category: String?, nothing: Nothing?){
        viewModelScope.launch {
                data.value =  ApiBuilder.provideApi().getCategoryNews(category = category)
        }

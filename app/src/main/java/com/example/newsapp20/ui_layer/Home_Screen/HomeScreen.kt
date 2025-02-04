@@ -25,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import com.example.newsapp20.Data.model.NewsModel
 import com.example.newsapp20.ui_layer.View_Model.viewModel
@@ -46,23 +47,21 @@ fun HomeScreen(viewModel: viewModel, navController: NavHostController) {
             ModalDrawerSheet(
                 drawerContainerColor = Color.White
             ) {
-
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Color.Red)
                 ) {
-
                 }
             }
         }
     ) {
         Scaffold(
             topBar = {
-
                 CenterAlignedTopAppBar(
                     title = {
-                        Text(text = "LATEST NEWS")
+                        Text(text = "LATEST NEWS"
+                        ,fontWeight = FontWeight.Bold)
                     },
                     navigationIcon = {
                         IconButton(onClick = {
@@ -74,7 +73,6 @@ fun HomeScreen(viewModel: viewModel, navController: NavHostController) {
                                 imageVector = Icons.Default.Menu,
                                 contentDescription = ""
                             )
-
                         }
                     },
                     actions = {
@@ -87,7 +85,6 @@ fun HomeScreen(viewModel: viewModel, navController: NavHostController) {
                             )
                         }
                     }
-
                 )
             }
         ) { paddingValues ->
